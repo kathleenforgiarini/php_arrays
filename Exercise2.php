@@ -26,9 +26,9 @@ function countVowels($str) {
     return $count;
 }
 
-uasort($students, "sortByLenghtOfVowels");
+uasort($students, "sortByQtdOfVowels");
 
-function sortByLenghtOfVowels($el1, $el2){
+function sortByQtdOfVowels($el1, $el2){
     // processing and return
     $vowelsInEl1 = countVowels($el1);
     $vowelsInEl2 = countVowels($el2);
