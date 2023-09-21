@@ -13,9 +13,25 @@ display($students);
 
 echo "============== Sort in ascending order of their total number of vowels ============== <br/>";
 
-uasort($students, function($el1, $el2) {
-    $vowelsInEl1 = preg_match_all('/[aeiouAEIOU]/', $el1);
-    $vowelsInEl2 = preg_match_all('/[aeiouAEIOU]/', $el2);
+function countVowels($str) {
+    $vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    $count = 0;
+    
+    for ($i = 0; $i < strlen($str); $i++) {
+        if (in_array($str[$i], $vowels)) {
+            $count++;
+        }
+    }
+    
+    return $count;
+}
+
+uasort($students, "sortByLenghtOfVowels");
+
+function sortByLenghtOfVowels($el1, $el2){
+    // processing and return
+    $vowelsInEl1 = countVowels($el1);
+    $vowelsInEl2 = countVowels($el2);
     
     if ($vowelsInEl1 == $vowelsInEl2) {
         return 0;
@@ -24,6 +40,6 @@ uasort($students, function($el1, $el2) {
     } else {
         return -1;
     }
-});
-    
-    display($students);
+}
+
+display($students);
